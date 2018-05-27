@@ -1,0 +1,106 @@
+*{
+    box-sizing: content-box;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  /*animation: App-logo-spin infinite 20s linear;*/
+  height: 40px;
+  display: block;
+  margin: 0;
+}
+
+.App-header {
+  position: relative;
+  background-color: #222;
+  height: 100px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.App-title{
+    font-weight: 300;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.movie-item-container{
+
+    width: 30%;
+    margin-right: 3%;
+    margin-top: 3%;
+    display: inline-block;
+    overflow: hidden;
+    /*background-color: red;*/
+    color: #222222;
+    border: 1px solid grey;
+    background-color: #222222;
+    border-radius: 5px;
+    color: white
+
+}
+
+
+
+.movie-image{
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    /*border-radius: 5px;*/
+
+}
+
+
+/*==========Media Queries===========*/
+
+/****Between 700px - 400px -> 2 columns***/
+
+@media screen and (max-width: 699px) {
+    .movie-item-container{
+        width: 45%;
+    }
+
+}
+
+/****Between 0px - 400px -> 1 column***/
+@media screen and (max-width: 399px) {
+    .movie-item-container{
+        display: block;
+        width: 100%;
+    }
+
+    .App-title{
+        font-size: 1em;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .App-logo {
+        height: 30px;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
