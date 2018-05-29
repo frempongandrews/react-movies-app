@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import imageNotAvailable from '../image-not-available.jpeg';
 
 
-//functional component
+//functional stateless component
 //below: instead of getting all the props, we get only the parts
 //we're interested in: props.imageUrl -> {imageUrl} and
 //props.movie -> {movie} => Object destructuring

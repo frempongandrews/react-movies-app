@@ -1,56 +1,71 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
-import MovieItem from './components/MovieItem';
+import MoviesList from './components/MoviesList';
+import MovieDetail from './components/MovieDetail';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Link,
+    NavLink
+} from 'react-router-dom';
+
+const Test = ( {match} ) => {
+    return (
+        <div className='test'>
+            <h2>{match.params.id}</h2>
+        </div>
+    )
+};
 
 
 
 
-//https://api.themoviedb.org/3/discover/movie?api_key=a6a85fc7c5764779d7241a0d44c6ec24
-let imagePath = 'https://image.tmdb.org/t/p/w300/';
 class App extends Component {
 
-    state = {
-        movies: []
-    };
-
-    async componentDidMount () {
-
-        try {
-            const resultObject = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=a6a85fc7c5764779d7241a0d44c6ec24');
-            const movies = await resultObject.json();
-            this.setState({
-                movies: movies.results
-            });
-        } catch(err) {
-            console.log(err);
-        }
-
-
-    }
 
     render () {
 
-        console.log(this.state.movies);
-
-        let movieItems = this.state.movies.map((movie, i) => {
-
-            return <MovieItem movie={movie} imageUrl={imagePath + movie.poster_path} key={i}/>
-
-        });
+        const appTitle = '< My Movies >';
 
         return (
 
-            <div className='App'>
+            <Router>
 
-                <header className='App-header'>
-                    <img src={logo} className='App-logo' alt='logo'/>
-                    <h2 className='App-title'>My Movies</h2>
-                </header>
+                <div className='App'>
 
-                {movieItems}
+                    <header className='App-header'>
 
-            </div>
+                        {/*<div className='small-screens-menu'>*/}
+                            {/*<button>Menu</button>*/}
+                        {/*</div>*/}
+
+                        <img src={logo} className='App-logo' alt='logo'/>
+                        <Link to='/'><h2 className='App-title'>{appTitle}</h2></Link>
+
+                        {/*<div className='movies-section-container'>*/}
+                            {/*<NavLink activeStyle={{color: '#00D171'}} className='movies-section discover' exact to='/'>Discover</NavLink>*/}
+                            {/*<NavLink activeStyle={{color: '#00D171'}} className='movies-section popular' to='/test'>Most Popular</NavLink>*/}
+                            {/*<NavLink activeStyle={{color: '#00D171'}} className='movies-section top-rated' to='/test'>Top Rated</NavLink>*/}
+                        {/*</div>*/}
+                    </header>
+
+                    <Switch>
+
+
+                        <Route exact path='/' component={MoviesList}/>
+                        <Route path='/:movieId' component={MovieDetail}/>
+
+
+                    </Switch>
+
+
+
+                </div>
+
+            </Router>
+
         )
     }
 
@@ -58,3 +73,5 @@ class App extends Component {
 
 
 export default App;
+
+
