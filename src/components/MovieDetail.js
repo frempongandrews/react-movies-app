@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Overdrive from'react-overdrive';
 const IMAGE_PATH = 'https://image.tmdb.org/t/p/w300';
 const FEATURE_IMAGE_PATH = 'https://image.tmdb.org/t/p/w1280';
 
@@ -31,7 +31,7 @@ export default class MovieDetail extends Component {
     render () {
 
         const {movie} = this.state;
-        console.log(movie.backdrop_path);
+
         return (
 
             <div className='movie-detail-container movie-detail'>
@@ -42,9 +42,9 @@ export default class MovieDetail extends Component {
                 </header>
 
                 <div className='content-info'>
-                    <div className='poster-image-container'>
+                    <Overdrive id={movie.title} className='poster-image-container'>
                          <img className='poster-image' src={`${IMAGE_PATH}${movie.poster_path}`}/>
-                    </div>
+                    </Overdrive>
 
                     <div className='movie-info'>
                         <h2 className='movie-title'>{ movie.title }</h2>
